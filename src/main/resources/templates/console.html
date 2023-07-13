@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Punti Pallavolo - Console</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<h1>Segnapunti - Console</h1>
+
+<div class="container">
+    <span> Setup </span>
+    <div class="div-table-setup">
+        <label>Squadra Locale:</label>
+        <form th:action="@{/console/teamA/setName}" method="post">
+            <input type="text" id="nameA" name="nameA" th:value="${punteggio.teamAName}">
+            <button type="submit">Aggiorna Squadra Locale</button>
+        </form>
+
+    </div>
+    <div class="div-table-setup">
+        <label>Squadra Ospite:</label>
+        <form th:action="@{/console/teamB/setName}" method="post">
+            <input type="text" id="nameB" name="nameB" th:value="${punteggio.teamBName}">
+            <button type="submit">Aggiorna Squadra Ospite</button>
+        </form>
+
+    </div>
+</div>
+<!---------------------------------------------------SETUP ------------------------------->
+</br>
+</br>
+
+<div class="container">
+
+    <div class="div-table">
+        <p class="labelPunteggio" th:text="${punteggio.teamAName} ">:</p>
+        <span class="punteggio" th:text="${punteggio.teamAScore}"></span>
+        <div class="div-table-button">
+            <form th:action="@{/console/teamA/addPoint}" method="post">
+                <button class="button-71" role="button" type="submit">Punto +</button>
+            </form>
+        </div>
+        <div class="div-table-button">
+            <form th:action="@{/console/teamA/removePoint}" method="post">
+                <button class="button-71" role="button" type="submit">Punto -</button>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="div-table">
+        <p class="labelPunteggio" th:text="${punteggio.teamBName} ">:</p>
+        <span class="punteggio" th:text="${punteggio.teamBScore}"></span>
+        <div class="div-table-button">
+            <form th:action="@{/console/teamB/addPoint}" method="post">
+                <button class="button-71" role="button" type="submit">Punto +</button>
+            </form>
+        </div>
+        <div class="div-table-button">
+            <form th:action="@{/console/teamB/removePoint}" method="post">
+                <button class="button-71" role="button" type="submit">Punto -</button>
+            </form>
+        </div>
+
+
+    </div>
+</div>
+<!------   BLOCCO SET ----->
+
+<div class="container">
+    <div class="div-table">
+        <div class="setRectangle">
+            <p class="labelSet">Set: </p>  <span class="set" th:text="${punteggio.setA}"></span>
+        </div>
+    </div>
+    <div class="div-table">
+        <div class="setRectangle">
+            <p class="labelSet">Set: </p> <span class="set" th:text="${punteggio.setB}"></span>
+        </div>
+    </div>
+    </br>
+    <div class="div-table">
+        <div class="div-table-button">
+            <form th:action="@{/console/teamA/addSet}" method="post">
+                <button class="button-71" role="button" type="submit">Set +</button>
+            </form>
+        </div>
+        <div class="div-table-button">
+            <form th:action="@{/console/teamA/removeSet}" method="post">
+                <button class="button-71" role="button" type="submit">Set -</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="div-table">
+        <div class="div-table-button">
+            <form th:action="@{/console/teamB/addSet}" method="post">
+                <button class="button-71" role="button" type="submit">Set +</button>
+            </form>
+        </div>
+        <div class="div-table-button">
+            <form th:action="@{/console/teamB/removeSet}" method="post">
+                <button class="button-71" role="button" type="submit">Set -</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+</body>
+<style>
+    .container{
+        text-align: center;
+    }
+    .div-table{
+        display: table-cell;
+        width: 850px;
+        padding: 20px;
+        margin-right: 20px;
+        background-color: #87b2f9;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    .div-table-setup{
+        display: table-cell;
+        width: 850px;
+        padding: 20px;
+        margin-right: 20px;
+        background-color: #ecd4a8;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    .div-table-button{
+        display: table-cell;
+        width: 150px;
+        height: 20px;
+        padding: 20px;
+        margin-right: 20px;
+        background-color: #87b2f9;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    .setRectangle{
+       display: table-cell;
+        width: 200px;
+        padding: 20px;
+        margin-right: 20px;
+        background-color: #87b2f9;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    .labelPunteggio{
+        font-size:70px;
+        font-family: georgia,garamond,serif;
+        height: 20px;
+    }
+    .punteggio{
+        font-size: 80px;
+        color: white;
+    }
+
+/* CSS */
+.button-71 {
+  background-color: #0078d0;
+  border: 0;
+  border-radius: 56px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: system-ui,-apple-system,system-ui,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  outline: 0;
+  padding: 16px 21px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-71:before {
+  background-color: initial;
+  background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
+  border-radius: 125px;
+  content: "";
+  height: 50%;
+  left: 4%;
+  opacity: .5;
+  position: absolute;
+  top: 0;
+  transition: all .3s;
+  width: 92%;
+}
+
+.button-71:hover {
+  box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+  transform: scale(1.05);
+}
+
+
+</style>
+</html>

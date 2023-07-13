@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+ <meta http-equiv="refresh" content="2">
+  <title>Display - Partita</title>
+
+
+</head>
+<body>
+  <h1>Punti Pallavolo - Display</h1>
+  <div class="container">
+    <div class="divLabel">
+      <label class="label" th:text="${punteggio.teamAName}"></label>
+    </div>
+    <div class="divLabel">
+      <label class="label" th:text="${punteggio.teamBName}"></label>
+    </div>
+  </div>
+  <div class="container">
+    <div class="puntiMogliano">
+      <span class="score" th:text="${punteggio.teamAScore}"></span>
+    </div>
+    <div class="puntiOspiti">
+      <span class="score" th:text="${punteggio.teamBScore}"></span>
+    </div>
+  </div>
+
+
+<style>
+.score{
+  font-size:200px;
+}
+.label{
+  font-size:120px;
+}
+.container{
+  text-align: center;
+}
+.divLabel{
+    display: table-cell;
+    width: 850px;
+    padding: 20px;
+    margin-right: 20px;
+    background-color: #87b2f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+
+}
+.puntiMogliano{
+  display:table-cell;
+  width:850px;
+  height:150px;
+  background-color:#87b2f9;
+}
+
+.puntiOspiti{
+  display:table-cell;
+  width:850px;
+  height:150px;
+  background-color:#87b2f9;
+}
+</style>
+</body>
+</html>
